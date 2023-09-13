@@ -1,5 +1,6 @@
 # Jr. Kelly Help Cog
 This is a help cog that i use for my bot called Jr. Kelly you can just copy and paste it if you want it would be appreciated if you mention this repo tho :D
+Create an issue if need help
 
 ```py
 import discord
