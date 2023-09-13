@@ -7,7 +7,7 @@ from discord.ext import commands
 color = 0x8F00FF
             
 
-def get_row(row, data):
+def get_row(row, data): # fixed data type for example if user rached last page and there is no more data to go instead of raisin error it will just roll back to first page
     return row % len(data)
 
 
@@ -50,14 +50,14 @@ class help_cate(discord.ui.View):
 
             
         ea.description = '\n'.join(owo)
-        ea.set_footer(text=  "Example: jr ping|stats -> jr ping or jr stats and not jr ping|stats")
+        ea.set_footer(text=  "Example: jr ping|stats -> jr ping or jr stats and not jr ping|stats") # add a tip so that users arent confused
         for e in self.children:
             if e.custom_id == "pages":
-                e.label = f"{frow+1}/{len(self.data)}"
+                e.label = f"{frow+1}/{len(self.data)}" 
         await interaction.edit_original_response(embed=ea, view=self)
 
  
-    @discord.ui.button(label="None", disabled=True, custom_id="pages")
+    @discord.ui.button(label="None", disabled=True, custom_id="pages") # navigatin button instead of footer i think people look at button more than they do on footer uff
     async def Disabeld(self, inte, but):
         ...
     
@@ -95,7 +95,7 @@ class help_cate(discord.ui.View):
         ea.set_footer(text=  "Example: jr ping|stats -> jr ping or jr stats and not jr ping|stats")
         for e in self.children:
             if e.custom_id == "pages":
-                e.label = f"{frow+1}/{len(self.data)}"
+                e.label = f"{frow+1}/{len(self.data)}" 
         await interaction.edit_original_response(embed=ea, view=self)
 
 
@@ -191,11 +191,11 @@ class Help(commands.Cog, name='Help'):
         self.o_pages= {}
         self.o_cat = {}
     
-    async def cog_load(self) -> None:
-        for command in self.bot.commands:
+    async def cog_load(self) -> None: # cachin data so that  we don't have to do it every time and increasin cpu and memory usage
+        for command in self.bot.commands: # running through all commands 
             
             category = command.cog_name.lower() if command.cog_name else "uncategorized"
-            if command.hidden == False:
+            if command.hidden == False: # makin sure that users don't we bot's hidden aka owner_only commands only applicable if you hide owner only commands
                     
 
                 if category not in self.categories:
@@ -224,7 +224,7 @@ class Help(commands.Cog, name='Help'):
     @commands.command()
     @commands.guild_only()
     async def help(self, ctx, *, command=None):
-        if not command:
+        if not command and not ctx.author.id in self.bot.owners:
 
 
             e = discord.Embed()
