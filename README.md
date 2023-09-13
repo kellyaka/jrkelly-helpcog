@@ -1,17 +1,9 @@
-# jrkelly-helpcog
-This is a help cog that i use for my bot called Jr. Kelly you can just copy and paste it if you want it would be appreciated if you mention my name tho :D
+# Jr. Kelly Help Cog
+This is a help cog that i use for my bot called Jr. Kelly you can just copy and paste it if you want it would be appreciated if you mention this repo tho :D
 
 ```py
-from typing import Any, List, Optional
 import discord
-from discord.components import SelectOption
 from discord.ext import commands
-import asyncio
-from discord.interactions import Interaction
-
-
-from discord.utils import MISSING
-
 color = 0x8F00FF
             
 
